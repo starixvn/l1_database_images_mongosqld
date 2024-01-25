@@ -1,5 +1,10 @@
 # `mongosqld`
 
+[![version-badge][mongosqld-version-badge]][mongosqld-release-link]
+
+[mongosqld-version-badge]: badges/mongosqld.svg
+[mongosqld-release-link]: https://www.mongodb.com/download-center/bi-connector/releases
+
 ## Quick reference
 
 - Maintained by:
