@@ -23,4 +23,15 @@ for DEBIAN_DISTRO in bookworm bullseye buster; do
     docker tag ${REGISTRY_URL}/ldb/mongosqld:${MONGOSQLD_LATEST}-${DEBIAN_DISTRO} ${REGISTRY_URL}/ldb/mongosqld:latest-${DEBIAN_DISTRO}
 done
 
+
+for DEBIAN_DISTRO in focal jammy; do
+    docker build \
+        --file ${MONGOSQLD_VERSION}/ubuntu/${DEBIAN_DISTRO}/Dockerfile \
+        --tag ${REGISTRY_URL}/ldb/mongosqld:${MONGOSQLD_VERSION}-${DEBIAN_DISTRO} \
+        --build-arg "VERSION=${MONGOSQLD_BINARY_VERSION}" \
+        -- ${MONGOSQLD_VERSION}
+    docker tag ${REGISTRY_URL}/ldb/mongosqld:${MONGOSQLD_LATEST}-${DEBIAN_DISTRO} ${REGISTRY_URL}/ldb/mongosqld:latest-${DEBIAN_DISTRO}
+done
+
+
 docker push -a ${REGISTRY_URL}/ldb/mongosqld

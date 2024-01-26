@@ -1,10 +1,10 @@
-FROM debian:12-slim AS base
+FROM ubuntu:jammy AS base
 
 FROM base as download
 ARG VERSION
 RUN apt update \
     && apt install --no-install-recommends -y curl ca-certificates
-RUN curl https://info-mongodb-com.s3.amazonaws.com/mongodb-bi/v2/mongodb-bi-linux-x86_64-debian12-v${VERSION:-2.14.12}.tgz -o /tmp/mongodb-bi.tgz \
+RUN curl https://info-mongodb-com.s3.amazonaws.com/mongodb-bi/v2/mongodb-bi-linux-x86_64-ubuntu2204-v${VERSION:-2.14.12}.tgz -o /tmp/mongodb-bi.tgz \
     && tar -xvzf /tmp/mongodb-bi.tgz -C /tmp --strip-components=1
 
 FROM base
