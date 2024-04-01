@@ -11,6 +11,9 @@ FROM base
 RUN mkdir -p /app
 WORKDIR /app
 RUN apt update \
+    && apt upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
+RUN apt update \
     && apt install --no-install-recommends -y libssl-dev libgssapi-krb5-2 \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=download /tmp/bin/mongosqld /usr/local/bin/mongosqld
