@@ -11,7 +11,7 @@ docker build \
     --tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_MINOR_VERSION} \
     --build-arg "VERSION=${IMAGE_PATCH_VERSION}" \
     -- ${IMAGE_MINOR_VERSION}
-docker tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_PATCH_VERSION} ${REGISTRY_URL}/ldb/${IMAGE_NAME}:latest
+docker tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_MINOR_VERSION} ${REGISTRY_URL}/ldb/${IMAGE_NAME}:latest
 
 
 for DEBIAN_DISTRO in bookworm bullseye buster; do
@@ -20,7 +20,7 @@ for DEBIAN_DISTRO in bookworm bullseye buster; do
         --tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_MINOR_VERSION}-${DEBIAN_DISTRO} \
         --build-arg "VERSION=${IMAGE_PATCH_VERSION}" \
         -- ${IMAGE_MINOR_VERSION}
-    docker tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_PATCH_VERSION}-${DEBIAN_DISTRO} ${REGISTRY_URL}/ldb/${IMAGE_NAME}:latest-${DEBIAN_DISTRO}
+    docker tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_MINOR_VERSION}-${DEBIAN_DISTRO} ${REGISTRY_URL}/ldb/${IMAGE_NAME}:latest-${DEBIAN_DISTRO}
 done
 
 
@@ -30,7 +30,7 @@ for UBUNTU_DISTRO in focal jammy; do
         --tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_MINOR_VERSION}-${UBUNTU_DISTRO} \
         --build-arg "VERSION=${IMAGE_PATCH_VERSION}" \
         -- ${IMAGE_MINOR_VERSION}
-    docker tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_PATCH_VERSION}-${UBUNTU_DISTRO} ${REGISTRY_URL}/ldb/${IMAGE_NAME}:latest-${UBUNTU_DISTRO}
+    docker tag ${REGISTRY_URL}/ldb/${IMAGE_NAME}:${IMAGE_MINOR_VERSION}-${UBUNTU_DISTRO} ${REGISTRY_URL}/ldb/${IMAGE_NAME}:latest-${UBUNTU_DISTRO}
 done
 
 docker push --all-tags ${REGISTRY_URL}/ldb/${IMAGE_NAME}
