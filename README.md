@@ -54,4 +54,4 @@ See the [`mongosqld` manual](https://www.mongodb.com/docs/bi-connector/current/r
 
 ## Image Variants
 
-The `mongosqld` binaries come in many flavors, each based on different operation systems. But for this Docker image, we only support releases of Debian.
+The `mongosqld` binaries come in many flavors, each based on different operation systems.
